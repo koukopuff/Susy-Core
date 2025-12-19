@@ -96,7 +96,7 @@ public class MetaTileEntitySuSyLargeCompressor extends RecipeMapSteamMultiblockC
     @NotNull
     @Override
     protected ICubeRenderer getFrontOverlay() {
-        return Textures.COMPRESSOR_OVERLAY;
+        return SusyTextures.LARGE_STEAM_COMPRESSOR_OVERLAY;
     }
 
     @SideOnly(Side.CLIENT)

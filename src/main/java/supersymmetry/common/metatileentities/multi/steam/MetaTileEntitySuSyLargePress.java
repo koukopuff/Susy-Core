@@ -4,12 +4,14 @@ import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.client.particle.VanillaParticleEffects;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.client.utils.TooltipHelper;
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.BlockMetalCasing;
+import gregtech.common.blocks.*;
+import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Blocks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import java.util.List;
+import net.minecraftforge.oredict.OreDictionary;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -26,7 +28,6 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
 import gregtech.api.metatileentity.multiblock.IMultiblockPart;
 import gregtech.client.renderer.ICubeRenderer;
-import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.ConfigHolder;
 import gregtech.api.unification.material.Materials;
 import supersymmetry.client.renderer.textures.SusyTextures;
@@ -50,13 +51,17 @@ public class MetaTileEntitySuSyLargePress extends RecipeMapSteamMultiblockContro
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXX", "XXX", "XXX", "XXX")
-                .aisle("XXX", "GSG", "GSG", "XXX")
-                .aisle("XXX", "XMX", "XXX", "XXX")
-                .where('G', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)))
+                .aisle("XXXXX", "X   X", "XXXXX", " YYY ")
+                .aisle("PSSSP", "P###P", "PSSSP", "PPGPP")
+                .aisle("XXMXX", "X   X", "XXXXX", " YYY ")
+                .where('#', air())
+                .where(' ', any())
                 .where('S', states(MetaBlocks.COMPRESSED.get(Materials.Steel).getBlock(Materials.Steel)))
                 .where('M', this.selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(26).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(20).or(autoAbilities()))
+                .where('Y', states(getCasingState()))
+                .where('P', states(getPipeCasingState()))
+                .where('G', states(getGearboxState()))
                 .build();
     }
 
@@ -64,6 +69,18 @@ public class MetaTileEntitySuSyLargePress extends RecipeMapSteamMultiblockContro
         return ConfigHolder.machines.steelSteamMultiblocks ?
                 MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID) :
                 MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.BRONZE_BRICKS);
+    }
+
+    protected static IBlockState getPipeCasingState() {
+        return ConfigHolder.machines.steelSteamMultiblocks ?
+                MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.STEEL_PIPE) :
+                MetaBlocks.BOILER_CASING.getState(BlockBoilerCasing.BoilerCasingType.BRONZE_PIPE);
+    }
+
+    protected static IBlockState getGearboxState() {
+        return ConfigHolder.machines.steelSteamMultiblocks ?
+                MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.STEEL_GEARBOX) :
+                MetaBlocks.TURBINE_CASING.getState(BlockTurbineCasing.TurbineCasingType.BRONZE_GEARBOX);
     }
 
     @SideOnly(Side.CLIENT)

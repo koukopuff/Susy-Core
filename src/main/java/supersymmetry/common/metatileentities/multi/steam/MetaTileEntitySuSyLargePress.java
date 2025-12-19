@@ -30,14 +30,13 @@ import gregtech.common.blocks.MetaBlocks;
 import gregtech.common.ConfigHolder;
 import gregtech.api.unification.material.Materials;
 import supersymmetry.client.renderer.textures.SusyTextures;
-import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 
 
-public class MetaTileEntitySuSyLargeCompressor extends RecipeMapSteamMultiblockController {
+public class MetaTileEntitySuSyLargePress extends RecipeMapSteamMultiblockController {
 
     private static final int PARALLEL_LIMIT = 8;
 
-    public MetaTileEntitySuSyLargeCompressor(ResourceLocation metaTileEntityId) {
+    public MetaTileEntitySuSyLargePress(ResourceLocation metaTileEntityId) {
         super(metaTileEntityId, RecipeMaps.COMPRESSOR_RECIPES, CONVERSION_RATE);
         this.recipeMapWorkable = new SteamMultiWorkable(this, CONVERSION_RATE);
         this.recipeMapWorkable.setParallelLimit(PARALLEL_LIMIT);
@@ -45,19 +44,19 @@ public class MetaTileEntitySuSyLargeCompressor extends RecipeMapSteamMultiblockC
 
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity tileEntity) {
-        return new MetaTileEntitySuSyLargeCompressor(this.metaTileEntityId);
+        return new MetaTileEntitySuSyLargePress(this.metaTileEntityId);
     }
 
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
                 .aisle("XXX", "XXX", "XXX", "XXX")
-                .aisle("XXX", "XSX", "XSX", "XXX")
-                .aisle("XMX", "XGX", "XGX", "XXX")
+                .aisle("XXX", "GSG", "GSG", "XXX")
+                .aisle("XXX", "XMX", "XXX", "XXX")
                 .where('G', states(MetaBlocks.TRANSPARENT_CASING.getState(BlockGlassCasing.CasingType.TEMPERED_GLASS)))
                 .where('S', states(MetaBlocks.COMPRESSED.get(Materials.Steel).getBlock(Materials.Steel)))
                 .where('M', this.selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(28).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(26).or(autoAbilities()))
                 .build();
     }
 
@@ -96,7 +95,7 @@ public class MetaTileEntitySuSyLargeCompressor extends RecipeMapSteamMultiblockC
     @NotNull
     @Override
     protected ICubeRenderer getFrontOverlay() {
-        return SusyTextures.LARGE_STEAM_COMPRESSOR_OVERLAY;
+        return SusyTextures.LARGE_STEAM_PRESS_OVERLAY;
     }
 
     @SideOnly(Side.CLIENT)

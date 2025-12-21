@@ -34,7 +34,6 @@ import gregtech.common.ConfigHolder;
 
 import supersymmetry.client.renderer.textures.SusyTextures;
 
-
 public class MetaTileEntitySuSyLargePress extends RecipeMapSteamMultiblockController {
 
     private static final int PARALLEL_LIMIT = 8;

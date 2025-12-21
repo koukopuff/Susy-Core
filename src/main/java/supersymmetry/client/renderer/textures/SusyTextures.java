@@ -32,8 +32,6 @@ public class SusyTextures {
     public static final OrientedOverlayRenderer ROASTER_OVERLAY = new OrientedOverlayRenderer("machines/roaster");
     public static final OrientedOverlayRenderer MIXER_OVERLAY_STEAM = new OrientedOverlayRenderer(
             "machines/mixer_steam");
-    public static final OrientedOverlayRenderer LARGE_STEAM_PRESS_OVERLAY = new OrientedOverlayRenderer(
-            "machines/multiblocks/large_steam_press");
     public static final OrientedOverlayRenderer CONTINUOUS_STIRRED_TANK_REACTOR_OVERLAY = new OrientedOverlayRenderer(
             "machines/continuous_stirred_tank_reactor");
     public static final OrientedOverlayRenderer FIXED_BED_REACTOR_OVERLAY = new OrientedOverlayRenderer(
@@ -144,6 +142,8 @@ public class SusyTextures {
             "machines/multiblocks/smoke_stack");
     public static final OrientedOverlayRenderer PRIMITIVE_SMELTER_OVERLAY = new OrientedOverlayRenderer(
             "machines/multiblocks/primitive_smelter");
+    public static final OrientedOverlayRenderer LARGE_STEAM_PRESS_OVERLAY = new OrientedOverlayRenderer(
+            "machines/multiblocks/large_steam_press");
     public static final OrientedOverlayRenderer TURNING_ZONE_OVERLAY = new OrientedOverlayRenderer(
             "machines/multiblocks/turning_zone");
     public static final OrientedOverlayRenderer MILLING_OVERLAY = new OrientedOverlayRenderer(

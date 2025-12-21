@@ -53,9 +53,10 @@ public class MetaTileEntitySuSyLargePress extends RecipeMapSteamMultiblockContro
     @Override
     protected BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("XXXXX", "X   X", "XXXXX", " YYY ")
-                .aisle("PSSSP", "P###P", "PSSSP", "PPGPP")
-                .aisle("XXMXX", "X   X", "XXXXX", " YYY ")
+                .aisle("XPX", "XPX", "XPX", " P ")
+                .aisle("XSX", "X#X", "XSX", "PGP")
+                .aisle("XSX", "X#X", "XSX", "PGP")
+                .aisle("XXX", "XMX", "XPX", " P ")
                 .where('#', air())
                 .where(' ', any())
                 .where('S', states(MetaBlocks.COMPRESSED.get(Materials.Steel).getBlock(Materials.Steel)))

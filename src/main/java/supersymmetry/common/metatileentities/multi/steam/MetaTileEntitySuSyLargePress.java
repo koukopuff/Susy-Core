@@ -60,7 +60,7 @@ public class MetaTileEntitySuSyLargePress extends RecipeMapSteamMultiblockContro
                 .where('#', air())
                 .where('S', states(MetaBlocks.COMPRESSED.get(Materials.Steel).getBlock(Materials.Steel)))
                 .where('M', this.selfPredicate())
-                .where('X', states(getCasingState()).setMinGlobalLimited(20).or(autoAbilities()))
+                .where('X', states(getCasingState()).setMinGlobalLimited(22).or(autoAbilities()))
                 .where('P', states(getPipeCasingState()))
                 .where('G', states(getGearboxState()))
                 .build();
